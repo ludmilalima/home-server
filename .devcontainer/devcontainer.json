@@ -5,6 +5,10 @@
   "workspaceMount": "source=home-server-workspace,type=volume,destination=/workspaces/home-server",
   "workspaceFolder": "/workspaces/home-server",
   "remoteUser": "home-server-builder",
+  "runArgs": [
+    "--device=/dev:/dev",
+    "--privileged"
+  ],
   "customizations": {
     "vscode": {
       "extensions": [
