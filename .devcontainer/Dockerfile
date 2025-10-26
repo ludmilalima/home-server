@@ -19,8 +19,15 @@ RUN apt-get update && \
     libncurses-dev \
     && apt-get clean
 
-# Set the working directory
-WORKDIR /workspace
+# Create a new user
+RUN useradd -m -s /bin/bash home-server && \
+    echo "home-server ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+# Switch to the new user
+USER home-server
+
+# Set the working directory for the new user
+WORKDIR /home/home-server
 
 # Default command
 CMD ["bash"]
